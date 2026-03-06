@@ -81,7 +81,27 @@
       background: radial-gradient(circle, rgba(155,107,181,0.06) 0%, transparent 65%);
       border-radius: 50%; pointer-events: none;
     }
-    .hero-inner { width: 100%; max-width: 520px; position: relative; z-index: 1; }
+    .hero-inner {
+      width: 100%; max-width: 1080px; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .hero-left { display: flex; flex-direction: column; align-items: flex-start; }
+    .hero-right { display: flex; align-items: center; justify-content: center; }
+    .hero-bottom { grid-column: 1 / -1; text-align: center; }
+    .video-placeholder {
+      width: 100%; max-width: 340px; aspect-ratio: 9 / 16;
+      background: #A371B5; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .play-btn {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(255,255,255,0.25); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+    .play-btn:hover { background: rgba(255,255,255,0.4); transform: scale(1.08); }
+    .play-btn svg { margin-left: 3px; }
 
     .proof-badge {
       display: inline-flex; align-items: center; gap: 10px;
@@ -276,6 +296,10 @@
     @media (max-width: 600px) {
       header { padding: 15px 20px; }
       .hero { padding: 100px 20px 50px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero-right { order: -1; }
+      .hero-left { align-items: stretch; }
+      .video-placeholder { max-width: 280px; margin: 0 auto; }
       h1 { font-size: 2.2rem; }
       .type-card { padding: 12px 8px; }
       .stats-inner { grid-template-columns: 1fr; gap: 24px; }
@@ -301,74 +325,89 @@
 <section class="hero">
   <div class="hero-inner">
 
-    <div class="proof-badge reveal d0">
-      <div class="proof-faces">
-        <div class="proof-face" style="background:#C9A8D8"></div>
-        <div class="proof-face" style="background:#9B6BB5"></div>
-        <div class="proof-face" style="background:#7D5196"></div>
-        <div class="proof-face" style="background:#634079"></div>
+    <div class="hero-left">
+      <div class="proof-badge reveal d0">
+        <div class="proof-faces">
+          <div class="proof-face" style="background:#C9A8D8"></div>
+          <div class="proof-face" style="background:#9B6BB5"></div>
+          <div class="proof-face" style="background:#7D5196"></div>
+          <div class="proof-face" style="background:#634079"></div>
+        </div>
+        <p class="proof-text"><strong>8,000+</strong> women have ditched cellulite for good</p>
       </div>
-      <p class="proof-text"><strong>8,000+</strong> women have ditched cellulite for good</p>
+
+      <h1 class="reveal d1">
+        What <span class="accent">Type</span> of<br>
+        <em>Cellulite</em><br>
+        Do You Have?
+      </h1>
+
+      <p class="subhead reveal d2">
+        Not all cellulite is created equal. This quick assessment reveals your
+        type and unlocks the exact protocol that works for <strong>YOUR</strong> cellulite.
+      </p>
+
+      <div class="type-grid reveal d3">
+        <div class="type-card light">
+          <div class="type-dot rose-dot">1</div>
+          <div class="type-name">Superficial</div>
+          <div class="type-sub">Newer &amp; responsive</div>
+        </div>
+        <div class="type-card dark">
+          <div class="type-dot navy-dot">2</div>
+          <div class="type-name">Structural</div>
+          <div class="type-sub">Most common type</div>
+        </div>
+        <div class="type-card earth">
+          <div class="type-dot earth-dot">3</div>
+          <div class="type-name">Deep</div>
+          <div class="type-sub">Long-standing</div>
+        </div>
+      </div>
+
+      <ul class="benefits reveal d4">
+        <li class="benefit">
+          <div class="check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3L3 5L7 1" stroke="#9B6BB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Discover your cellulite type in 60 seconds
+        </li>
+        <li class="benefit">
+          <div class="check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3L3 5L7 1" stroke="#9B6BB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Get a personalized protocol — different for each type
+        </li>
+        <li class="benefit">
+          <div class="check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3L3 5L7 1" stroke="#9B6BB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          See the exact timeline you can expect for YOUR type
+        </li>
+      </ul>
+
+      <div class="reveal d5">
+        <a href="/quiz" class="cta-btn">Start Free Quiz →</a>
+        <p class="microcopy">60 seconds <span>·</span> No email required yet <span>·</span> Free</p>
+      </div>
     </div>
 
-    <h1 class="reveal d1">
-      What <span class="accent">Type</span> of<br>
-      <em>Cellulite</em><br>
-      Do You Have?
-    </h1>
-
-    <p class="subhead reveal d2">
-      Not all cellulite is created equal. This quick assessment reveals your
-      type and unlocks the exact protocol that works for <strong>YOUR</strong> cellulite.
-    </p>
-
-    <div class="type-grid reveal d3">
-      <div class="type-card light">
-        <div class="type-dot rose-dot">1</div>
-        <div class="type-name">Superficial</div>
-        <div class="type-sub">Newer &amp; responsive</div>
-      </div>
-      <div class="type-card dark">
-        <div class="type-dot navy-dot">2</div>
-        <div class="type-name">Structural</div>
-        <div class="type-sub">Most common type</div>
-      </div>
-      <div class="type-card earth">
-        <div class="type-dot earth-dot">3</div>
-        <div class="type-name">Deep</div>
-        <div class="type-sub">Long-standing</div>
+    <div class="hero-right reveal d2">
+      <div class="video-placeholder">
+        <div class="play-btn">
+          <svg width="24" height="28" viewBox="0 0 24 28" fill="none">
+            <path d="M22 14L2 26V2L22 14Z" fill="white"/>
+          </svg>
+        </div>
       </div>
     </div>
 
-    <ul class="benefits reveal d4">
-      <li class="benefit">
-        <div class="check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3L3 5L7 1" stroke="#9B6BB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        Discover your cellulite type in 60 seconds
-      </li>
-      <li class="benefit">
-        <div class="check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3L3 5L7 1" stroke="#9B6BB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        Get a personalized protocol — different for each type
-      </li>
-      <li class="benefit">
-        <div class="check"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3L3 5L7 1" stroke="#9B6BB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        See the exact timeline you can expect for YOUR type
-      </li>
-    </ul>
-
-    <div class="reveal d5">
-      <a href="/quiz" class="cta-btn">Start Free Quiz →</a>
-      <p class="microcopy">60 seconds <span>·</span> No email required yet <span>·</span> Free</p>
+    <div class="hero-bottom">
+      <hr class="divider reveal d6">
+      <p class="body-copy reveal d6">
+        Cellulite falls into three distinct types — each with different causes, progression patterns, and solutions.
+        Generic creams and wraps don't work because they don't address the <strong>root cause</strong> of your cellulite type.
+        The Claro Cupper combines vacuum cupping with red-light therapy at the structural level.
+      </p>
+      <p class="privacy reveal d6">
+        🔒 Your responses are private. We never sell your data. <a href="/privacy">Privacy Policy</a>
+      </p>
     </div>
 
-    <hr class="divider reveal d6">
-    <p class="body-copy reveal d6">
-      Cellulite falls into three distinct types — each with different causes, progression patterns, and solutions.
-      Generic creams and wraps don't work because they don't address the <strong>root cause</strong> of your cellulite type.
-      The Claro Cupper combines vacuum cupping with red-light therapy at the structural level.
-    </p>
-    <p class="privacy reveal d6">
-      🔒 Your responses are private. We never sell your data. <a href="/privacy">Privacy Policy</a>
-    </p>
   </div>
 </section>
 
